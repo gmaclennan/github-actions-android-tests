@@ -10,6 +10,22 @@ jobs:
           fetch-depth: 1
       - name: Node
         uses: actions/setup-node@v1
+      - name: Create two taps
+        run: |
+          ip tuntap add dev tap0 mode tap user $(whoami)
+          ip tuntap add dev tap1 mode tap user $(whoami)
+      - name: Create bridge
+        run: |
+          ip link add bridge0 type bridge
+          ip link set tap0 master bridge0
+          ip link set tap1 master bridge0
+          ip link set bridge0 up
+          ip link set tap0 up
+          ip link set tap1 up
+      - name: Assign ip and forwarding
+        run: |
+          ip addr add 10.0.2.2/24 dev bridge0
+          sysctl -w net.ipv4.ip_forward=1
       - name: Use specific Java version for sdkmanager to work
         uses: joschi/setup-jdk@v1
         with:
