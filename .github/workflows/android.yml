@@ -43,7 +43,7 @@ jobs:
           echo "Emulator version:"
           $ANDROID_HOME/emulator/emulator -version
       - name: Android Emulator
-        timeout-minutes: 10
+        timeout-minutes: 60
         continue-on-error: true
         run: |
           echo "Starting emulator"
