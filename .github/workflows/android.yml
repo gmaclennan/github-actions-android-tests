@@ -22,7 +22,7 @@ jobs:
       - run: $ANDROID_HOME/platform-tools/adb devices
       - name: Download Android Emulator Image
         run: |
-        $ANDROID_HOME/tools/bin/sdkmanager "emulator"
+          $ANDROID_HOME/tools/bin/sdkmanager "emulator"
           echo "Downloading emulator image"
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-28;default;x86" > /dev/null
           echo "Creating emulator avd"
