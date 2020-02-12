@@ -17,11 +17,8 @@ jobs:
           architecture: "x64"
       - name: Download Android Emulator Image
         run: |
-          $ANDROID_HOME/tools/bin/sdkmanager --update | grep -v = || true
-          echo "SDK versions:"
-          $ANDROID_HOME/tools/bin/sdkmanager --list
-          echo "Downloading emulator image"
-          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-28;default;x86" > /dev/null
+          echo "List targets"
+          $ANDROID_HOME/tools/bin/avdmanager list target
           echo "Creating emulator avd"
           echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name emu --device "Nexus 6" -k 'system-images;android-28;default;x86'
           echo "Emulator version:"
