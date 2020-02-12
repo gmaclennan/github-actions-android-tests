@@ -17,7 +17,8 @@ jobs:
           architecture: "x64"
       - uses: malinskiy/action-android/install-sdk@release/0.0.5
       - run: echo $ANDROID_HOME
-      - run: ls -al $ANDROID_HOME/platform-tools
+      - run: ls -al $ANDROID_HOME
+      - run: $ANDROID_HOME/tools/bin/sdkmanager "platform-tools"
       - run: $ANDROID_HOME/platform-tools/adb devices
       - name: Download Android Emulator Image
         run: |
