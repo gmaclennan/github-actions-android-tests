@@ -26,8 +26,6 @@ jobs:
           echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name emu --device "Nexus 6" -k 'system-images;android-28;default;x86' > /dev/null
           echo "Emulator version:"
           $ANDROID_HOME/emulator/emulator -version
-          echo "\nEmulator config"
-          ls $HOME/.android/avd/
       - name: Android Emulator
         timeout-minutes: 10
         continue-on-error: true
