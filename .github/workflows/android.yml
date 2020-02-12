@@ -2,7 +2,7 @@ name: Android
 on: [push]
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -17,7 +17,7 @@ jobs:
           architecture: "x64"
       - name: Download Android Emulator Image
         run: |
-          sdkmanager --update | grep -v = || true
+          $ANDROID_HOME/tools/bin/sdkmanager --update | grep -v = || true
           echo "SDK versions:"
           $ANDROID_HOME/tools/bin/sdkmanager --list
           echo "Downloading emulator image"
