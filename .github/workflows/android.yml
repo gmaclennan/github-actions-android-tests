@@ -16,8 +16,9 @@ jobs:
           java-version: "openjdk8"
           architecture: "x64"
       - uses: malinskiy/action-android/install-sdk@release/0.0.5
-      - run: adb devices
       - run: echo $ANDROID_HOME
+      - run: ls -al $ANDROID_HOME/platform-tools
+      - run: $ANDROID_HOME/platform-tools/adb devices
       - name: Download Android Emulator Image
         run: |
           echo "Emulator version:"
